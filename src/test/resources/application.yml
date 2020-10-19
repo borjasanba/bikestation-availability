@@ -1,0 +1,6 @@
+logging.level.com.borjasanba.bikes: DEBUG
+bike.nyc.url: localhost:9999
+
+connector.station:
+  info.rate: 86400000
+  status.rate: 60000

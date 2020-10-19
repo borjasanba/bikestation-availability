@@ -1,0 +1,26 @@
+spring:
+  application.name: low-availability-service
+
+  kafka.producer:
+    bootstrap-servers: localhost:9092
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  cloud.stream:
+    bindings:
+      stationStatus.destination: station_status
+      stationInfoTable.destination: station_information
+      lowAvailability.destination: low_availability
+    kafka.streams.binder:
+      brokers: localhost
+      configuration:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        commit.interval.ms: 1000
+
+bike.nyc:
+  url: https://gbfs.citibikenyc.com/
+  availability.threshold: 10
+
+connector.station:
+  info.rate: 86400000
+  status.rate: 60000
